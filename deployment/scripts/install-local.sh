@@ -4,38 +4,38 @@
 
 echo "Installing Ubuntu packages."
 
-sudo add-apt-repository -y ppa:longsleep/golang-backports
+# sudo add-apt-repository -y ppa:longsleep/golang-backports
 
-sudo apt-get -y update
-sudo apt-get -y install \
-	protobuf-compiler \
-	protobuf-compiler-grpc \
-	git \
-	openssl \
-	jq \
-	graphviz
+# sudo apt-get -y update
+# sudo apt-get -y install \
+# 	protobuf-compiler \
+# 	protobuf-compiler-grpc \
+# 	git \
+# 	openssl \
+# 	jq \
+# 	graphviz
 
 cd ~
 
 echo "Installing golang."
 
-wget https://storage.googleapis.com/golang/go1.17.2.linux-amd64.tar.gz
-tar xpzf go1.17.2.linux-amd64.tar.gz
+wget https://storage.googleapis.com/golang/go1.17.3.linux-amd64.tar.gz
+tar xpzf go1.17.3.linux-amd64.tar.gz -C ~/bench-bft/mirbft-iss
 
-sudo mkdir -p /opt/gopath
-sudo chown -R  $user:$group /opt/gopath
+# sudo mkdir -p ~/bench-bft/mirbft-iss/gopath
+# sudo chown -R  $user:$group ~/bench-bft/mirbft-iss/gopath
 
-export PATH=$PATH:~/go/bin/:/opt/gopath/bin/
-export GOPATH=/opt/gopath
-export GOROOT=~/go
+export PATH=$PATH:~/bench-bft/mirbft-iss/go/bin/:~/bench-bft/mirbft-iss/gopath/bin/
+export GOPATH=~/bench-bft/mirbft-iss/gopath
+export GOROOT=~/bench-bft/mirbft-iss/go
 export GOCACHE=~/.cache/go-build
 export GIT_SSL_NO_VERIFY=1
 export GO111MODULE=off
 
 cat << EOF >> ~/.bashrc
-export PATH=$PATH:~/go/bin/:/opt/gopath/bin/
-export GOPATH=/opt/gopath
-export GOROOT=~/go
+export PATH=$PATH:~/bench-bft/mirbft-iss/go/bin/:~/bench-bft/mirbft-iss/gopath/bin/
+export GOPATH=~/bench-bft/mirbft-iss/gopath
+export GOROOT=~/bench-bft/mirbft-iss/go
 export GOCACHE=~/.cache/go-build
 export GIT_SSL_NO_VERIFY=1
 export GO111MODULE=off
