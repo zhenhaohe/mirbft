@@ -4,16 +4,16 @@
 
 echo "Installing Ubuntu packages."
 
-# sudo add-apt-repository -y ppa:longsleep/golang-backports
+sudo add-apt-repository -y ppa:longsleep/golang-backports
 
-# sudo apt-get -y update
-# sudo apt-get -y install \
-# 	protobuf-compiler \
-# 	protobuf-compiler-grpc \
-# 	git \
-# 	openssl \
-# 	jq \
-# 	graphviz
+sudo apt-get -y update
+sudo apt-get -y install \
+	protobuf-compiler \
+	protobuf-compiler-grpc \
+	git \
+	openssl \
+	jq \
+	graphviz
 
 cd ~
 
@@ -22,8 +22,8 @@ echo "Installing golang."
 wget https://storage.googleapis.com/golang/go1.17.3.linux-amd64.tar.gz
 tar xpzf go1.17.3.linux-amd64.tar.gz -C ~/bench-bft/mirbft-iss
 
-# sudo mkdir -p ~/bench-bft/mirbft-iss/gopath
-# sudo chown -R  $user:$group ~/bench-bft/mirbft-iss/gopath
+mkdir -p ~/bench-bft/mirbft-iss/gopath
+chown -R  $user:$group ~/bench-bft/mirbft-iss/gopath
 
 export PATH=$PATH:~/bench-bft/mirbft-iss/go/bin/:~/bench-bft/mirbft-iss/gopath/bin/
 export GOPATH=~/bench-bft/mirbft-iss/gopath
