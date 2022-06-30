@@ -20,23 +20,23 @@ cd ~
 echo "Installing golang."
 
 wget https://storage.googleapis.com/golang/go1.17.3.linux-amd64.tar.gz
-tar xpzf go1.17.3.linux-amd64.tar.gz -C ~/bench-bft/mirbft-iss
+tar xpzf go1.17.3.linux-amd64.tar.gz -C /home/zhe/bench-bft/mirbft-iss
 
-mkdir -p ~/bench-bft/mirbft-iss/gopath
-chown -R  $user:$group ~/bench-bft/mirbft-iss/gopath
+mkdir -p /home/zhe/bench-bft/mirbft-iss/gopath
+chown -R  $user:$group /home/zhe/bench-bft/mirbft-iss/gopath
 
-export PATH=$PATH:~/bench-bft/mirbft-iss/go/bin/:~/bench-bft/mirbft-iss/gopath/bin/
-export GOPATH=~/bench-bft/mirbft-iss/gopath
-export GOROOT=~/bench-bft/mirbft-iss/go
-export GOCACHE=~/.cache/go-build
+export PATH=$PATH:/home/zhe/bench-bft/mirbft-iss/go/bin/:/home/zhe/bench-bft/mirbft-iss/gopath/bin/
+export GOPATH=/home/zhe/bench-bft/mirbft-iss/gopath
+export GOROOT=/home/zhe/bench-bft/mirbft-iss/go
+export GOCACHE=/home/zhe/.cache/go-build
 export GIT_SSL_NO_VERIFY=1
 export GO111MODULE=off
 
-cat << EOF >> ~/.bashrc
-export PATH=$PATH:~/bench-bft/mirbft-iss/go/bin/:~/bench-bft/mirbft-iss/gopath/bin/
-export GOPATH=~/bench-bft/mirbft-iss/gopath
-export GOROOT=~/bench-bft/mirbft-iss/go
-export GOCACHE=~/.cache/go-build
+cat << EOF >> /home/zhe/.bashrc
+export PATH=$PATH:/home/zhe/bench-bft/mirbft-iss/go/bin/:/home/zhe/bench-bft/mirbft-iss/gopath/bin/
+export GOPATH=/home/zhe/bench-bft/mirbft-iss/gopath
+export GOROOT=/home/zhe/bench-bft/mirbft-iss/go
+export GOCACHE=/home/zhe/.cache/go-build
 export GIT_SSL_NO_VERIFY=1
 export GO111MODULE=off
 EOF
