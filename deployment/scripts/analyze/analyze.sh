@@ -25,7 +25,7 @@ function analyze() {
     echo "  > Loading trace into database..."
     startTimeNs=$(gdate +%s%N 2>/dev/null || date +%s%N) # This is due to a different date command on Mac.
 
-    python3 scripts/analyze/load-logs.py "$dir/$dbfile" $dir/slave-*/*.trc #the last argument must not be quoted!
+    python3 /home/zhe/bench-bft/mirbft-iss/scripts/analyze/load-logs.py "$dir/$dbfile" $dir/slave-*/*.trc #the last argument must not be quoted!
 
     endTimeNs=$(gdate +%s%N 2>/dev/null || date +%s%N) # This is due to a different data command on Mac.
     echo "  > Loaded trace into database in $(((endTimeNs - startTimeNs) / 1000000000)) s."
@@ -39,7 +39,7 @@ function analyze() {
       echo "  > Running queries on trace database: $queryFile"
       startTimeNs=$(gdate +%s%N 2>/dev/null || date +%s%N) # This is due to a different data command on Mac.
 
-      python3 scripts/analyze/run-queries.py "$dir/$dbfile" "$queryFile" "$dir" >> $dir/$queryOutput
+      python3 /home/zhe/bench-bft/mirbft-iss/scripts/analyze/run-queries.py "$dir/$dbfile" "$queryFile" "$dir" >> $dir/$queryOutput
 
       endTimeNs=$(gdate +%s%N 2>/dev/null || date +%s%N) # This is due to a different data command on Mac.
       echo "  > Processed '$queryFile' in $(((endTimeNs - startTimeNs) / 1000000000)) s."

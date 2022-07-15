@@ -4,11 +4,10 @@ dpl_filename=deployment.dpl
 csv_filename=deployment.csv
 result_summary_file=result-summary.csv
 exp_id_digits=4
-analysis_query_params="-q queries/ethereum.sql -q queries/aggregates.sql -q queries/histograms.sql"
 
 # Private key, of which the corresponding public key needs to be an authorized ssh key at each instance.
 # (Previously uploaded to IBM Cloud and specified at instance creation in the corresponding template file)
-private_key_file=ibmcloud-ssh-key
+private_key_file=~/.ssh/id_rsa
 
 # Options to use when communicating with the remote machines.
 ssh_options="-i $private_key_file -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ServerAliveInterval=60"
@@ -46,14 +45,14 @@ local_master_log=master-log.log
 local_master_status_file=master-status
 local_master_ready_file=master-ready
 local_result_fetching_log=result-fetching.log
-remote_work_dir=/root
+remote_work_dir=/home/zhe/bench-bft/mirbft-iss
 remote_instance_tag_file=$remote_work_dir/instance-tag
 remote_status_file=$remote_work_dir/status
 remote_ready_file=$remote_work_dir/master-ready
-remote_main_log=/root/main_log.log
-remote_master_log=/root/master-log.log
-remote_slave_log=/root/slave-log.log
-remote_private_key_file=$remote_work_dir/ibmcloud-ssh-key # Key used by the instances to communicate among each other.
+remote_main_log=/home/zhe/bench-bft/mirbft-iss/main_log.log
+remote_master_log=/home/zhe/bench-bft/mirbft-iss/master-log.log
+remote_slave_log=/home/zhe/bench-bft/mirbft-iss/slave-log.log
+remote_private_key_file=~/.ssh/id_rsa # Key used by the instances to communicate among each other.
 remote_instance_detail_file=$remote_work_dir/instance-detail.json
 remote_user_script_body=$remote_work_dir/user-script-body.sh
 remote_user_script_uploaded=$remote_work_dir/user-script-uploaded
@@ -61,7 +60,7 @@ remote_master_command_file=$remote_work_dir/master-commands.cmd
 remote_exp_dir=$remote_work_dir/current-deployment-data
 remote_analysis_processes=8
 
-remote_gopath=/root/go
+remote_gopath=/home/zhe/bench-bft/mirbft-iss/gopath
 remote_code_dir="$remote_gopath/src/github.com/hyperledger-labs/mirbft"
 remote_config_dir=$remote_work_dir/experiment-config
 remote_tls_directory="$remote_code_dir/tls-data"
@@ -70,6 +69,8 @@ downloaded_code_dir=github.com/hyperledger-labs/mirbft/
 # remote_delete_files must be on one line, as it is passed in a string to SSH as a command to execute
 remote_delete_files="$remote_work_dir/experiment-output-*.tar.gz $remote_work_dir/experiment-output $remote_master_log $remote_slave_log $remote_status_file $remote_ready_file $remote_instance_tag_file $remote_master_command_file $remote_code_dir $remote_config_dir $remote_exp_dir"
 downloaded_gopath="remote-gopath"
+
+analysis_query_params="-q $remote_work_dir/queries/ethereum.sql -q $remote_work_dir/queries/aggregates.sql -q $remote_work_dir/queries/histograms.sql"
 
 # OLDMIR
 oldmir_git_repository=git@github.ibm.com:fabric-security-research/sbft.git

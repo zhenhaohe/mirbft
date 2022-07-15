@@ -36,10 +36,13 @@ fi
 
 # Start the deployment
 if [ "$depl_type" = "local" ]; then
+  echo "Deployment local"
   source scripts/deploy-local.sh
 elif [ "$depl_type" = "cloud" ]; then
+  echo "Deployment cloud"
   source scripts/deploy-cloud.sh
 elif [ "$depl_type" = "remote" ]; then
+  echo "Deployment remote"
   source scripts/deploy-remote.sh
 else
   >&2 echo "$0: unknown deployment type: $depl_type (allowed values: local, cloud, remote)"

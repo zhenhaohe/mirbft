@@ -42,7 +42,7 @@ for experiment in $experiments; do
   # If number of threads has not yet been reached,
   # launch new analysis in the background.
   if [ $t -lt $threads ]; then
-    scripts/analyze/analyze.sh $params $experiment &
+    /home/zhe/bench-bft/mirbft-iss/scripts/analyze/analyze.sh $params $experiment &
     t=$((t + 1))
   fi
 

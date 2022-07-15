@@ -7,11 +7,11 @@ CLIENT_TIMEOUT = 480000 # In milliseconds
 SIGNAL_DELAY = "5s"
 STOP_SLAVES_DELAY = "3s"
 SCP_RETRY_COUNT = "10"
-MASTER_CONFIG_DIR = "experiment-config"
-MASTER_EXP_DIR="current-deployment-data"
-SLAVE_CONFIG_FILE = "config/config.yml"
-OLDMIR_SERVER_CONFIG = "config/oldmir-config-server.yml"
-OLDMIR_CLIENT_CONFIG = "config/oldmir-config-client.yml"
+MASTER_CONFIG_DIR = "/home/zhe/bench-bft/mirbft-iss/experiment-config"
+MASTER_EXP_DIR="/home/zhe/bench-bft/mirbft-iss/current-deployment-data"
+SLAVE_CONFIG_FILE = "/home/zhe/bench-bft/mirbft-iss/config/config.yml"
+OLDMIR_SERVER_CONFIG = "/home/zhe/bench-bft/mirbft-issconfig/oldmir-config-server.yml"
+OLDMIR_CLIENT_CONFIG = "/home/zhe/bench-bft/mirbft-issconfig/oldmir-config-client.yml"
 LOCAL_MASTER_STATUS_FILE = "master-status"
 LOCAL_IP_ADDRESS = "127.0.0.1"
 LOCAL_MASTER_PORT = "9999"
@@ -80,14 +80,14 @@ def setBandwidth(expID, bandwidths):
     for s, bandwidth in bandwidths.items():
         if bandwidth != "0" and bandwidth != "unlimited":
             output(
-                "exec-start {0} set-bandwidth-{1}.log tc qdisc add dev eth0 root tbf rate {2} burst 320kbit latency 400ms"
+                "#exec-start {0} set-bandwidth-{1}.log tc qdisc add dev eth0 root tbf rate {2} burst 320kbit latency 400ms"
                 "".format(s, expID, bandwidth)
             )
-            output("exec-wait {0} 2000 "
-                   "exec-start {0} experiment-output/{1}/slave-__id__/FAILED echo Could not set bandwidth; "
-                   "exec-wait {0} 2000".format(s, expID))
+            output("#exec-wait {0} 2000 "
+                   "#exec-start {0} experiment-output/{1}/slave-__id__/FAILED echo Could not set bandwidth; "
+                   "#exec-wait {0} 2000".format(s, expID))
     for s in bandwidths:
-        output("sync {0}".format(s))
+        output("#sync {0}".format(s))
     output("")
 
 
@@ -96,14 +96,14 @@ def unsetBandwidth(expID, bandwidths):
     for s, bandwidth in bandwidths.items():
         if bandwidth != "0" and bandwidth != "unlimited":
             output(
-                "exec-start {0} unset-bandwidth-{1}.log tc qdisc del dev eth0 root tbf rate {2} burst 320kbit latency 400ms"
+                "#exec-start {0} unset-bandwidth-{1}.log tc qdisc del dev eth0 root tbf rate {2} burst 320kbit latency 400ms"
                 "".format(s, expID, bandwidth)
             )
-            output("exec-wait {0} 2000 "
-                   "exec-start {0} experiment-output/{1}/slave-__id__/FAILED echo Could not unset bandwidth; "
-                   "exec-wait {0} 2000".format(s, expID))
+            output("#exec-wait {0} 2000 "
+                   "#exec-start {0} experiment-output/{1}/slave-__id__/FAILED echo Could not unset bandwidth; "
+                   "#exec-wait {0} 2000".format(s, expID))
     for s, bandwidth in bandwidths.items():
-        output("sync {0}".format(s))
+        output("#sync {0}".format(s))
     output("")
 
 

@@ -31,7 +31,7 @@ if [ "$role" = "peer" ]; then
   echo "  addresses:" >> $config_file
   for endpoint in $addresses; do
     address="$(cut -d':' -f1 <<<$endpoint)"
-    scp $ssh_options root@$address:/root/tls-data/auth.pem /root/tls-data/$address.pem
+    scp $ssh_options zhe@$address:/root/tls-data/auth.pem /root/tls-data/$address.pem
     echo "  - \"/root/tls-data/$address.pem\"" >> $config_file
   done
 

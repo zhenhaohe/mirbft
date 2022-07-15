@@ -16,11 +16,11 @@
 Logging: "debug" # Zerolog level. One of {trace, debug, info, warning, error}
 
 # Communication channel config
-UseTLS: true                # Use TLS for both peer-to-peer and client-to-peer communication
+UseTLS: false                # Use TLS for both peer-to-peer and client-to-peer communication
                             # The 3 options below are ignored if UseTLS is set to false.
-CACertFile: "tls-data/ca.pem"
-KeyFile: "tls-data/auth.key"
-CertFile: "tls-data/auth.pem"
+CACertFile: "/home/zhe/bench-bft/mirbft-iss/tls-data/ca.pem"
+KeyFile: "/home/zhe/bench-bft/mirbft-iss/tls-data/auth.key"
+CertFile: "/home/zhe/bench-bft/mirbft-iss/tls-data/auth.pem"
 
 PriorityConnections: 1      # Number of parallel priority connections between 2 peers
 BasicConnections: 2         # Number underlying parallel network connections for each logical connection between 2 peers.
@@ -114,8 +114,8 @@ SignRequests:       true    # Sign client requests and verify client signatures.
 VerifyRequestsEarly: false  # If true, incoming requests are verified before being added to buckets.
                             # SignRequests must be set to true for this field to be considered.
 
-ClientPrivKeyFile: "tls-data/client-ecdsa-256.key" # Key for client request Signing.
-ClientPubKeyFile: "tls-data/client-ecdsa-256.pem" # Key for client request verification.
+ClientPrivKeyFile: "/home/zhe/bench-bft/mirbft-iss/tls-data/client-ecdsa-256.key" # Key for client request Signing.
+ClientPubKeyFile: "/home/zhe/bench-bft/mirbft-iss/tls-data/client-ecdsa-256.pem" # Key for client request verification.
 PrecomputeRequests: true    # Pre-compute (and sign, if applicable) all requests at a client before starting to submit.
                             # RequestsPerClient must not be zero if PrecomputeRequests is true.
 

@@ -62,17 +62,17 @@ function pushBinary() {
 
   echo "Uploading binary to client machine and killing test: $clIp"
 
-  ssh $ssh_options root@$clIp "killall contentiontest"
+  ssh $ssh_options zhe@$clIp "killall contentiontest"
 
   # Upload binary to client
-  scp $ssh_options $contentionTestBinary root@$clIp:
+  scp $ssh_options $contentionTestBinary zhe@$clIp:
 }
 
 
 function runRemoteClient() {
   local clIp=$1
 
-  ssh $ssh_options -o "LogLevel=QUIET" root@$clIp "./contentiontest client $ownIP --tls tls-data -n $clientThreads -t $duration -l $payloadSize $channelOptions > contention-test-client.log"
+  ssh $ssh_options -o "LogLevel=QUIET" zhe@$clIp "./contentiontest client $ownIP --tls tls-data -n $clientThreads -t $duration -l $payloadSize $channelOptions > contention-test-client.log"
 }
 
 for tag in $clientTags; do
